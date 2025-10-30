@@ -1,0 +1,37 @@
+[
+  {
+    "name": "John Doe",
+    "rating": 5,
+    "comment": "Excellent products and fast delivery!",
+    "date": "2025-01-15",
+    "image": "https://randomuser.me/api/portraits/men/32.jpg"
+  },
+  {
+    "name": "Emily Smith",
+    "rating": 4,
+    "comment": "Good experience overall, but packaging could be better.",
+    "date": "2025-02-10",
+    "image": "https://randomuser.me/api/portraits/women/45.jpg"
+  },
+  {
+    "name": "Michael Lee",
+    "rating": 5,
+    "comment": "Amazing quality and excellent customer support!",
+    "date": "2025-03-05",
+    "image": "https://randomuser.me/api/portraits/men/28.jpg"
+  },
+  {
+    "name": "Sophia Rahman",
+    "rating": 5,
+    "comment": "Loved the variety of products. Will definitely order again!",
+    "date": "2025-04-18",
+    "image": "https://randomuser.me/api/portraits/women/68.jpg"
+  },
+  {
+    "name": "Daniel Carter",
+    "rating": 4,
+    "comment": "Product arrived on time and as described. Great value!",
+    "date": "2025-05-21",
+    "image": "https://randomuser.me/api/portraits/men/50.jpg"
+  }
+]

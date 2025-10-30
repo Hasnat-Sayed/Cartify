@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cartify</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="stylesheet" href="styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+      integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+  </head>
+  <body class="bg-gray-100 roboto-font">
+    <!--nav-->
+    <nav id="navbar" class="bg-white shadow-md sticky top-0 z-50">
+      <div class="container mx-auto px-4 py-4">
+        <div class="flex justify-between items-center">
+          <div class="flex items-center gap-3">
+            <img class="w-9" src="./assets/logo.png" alt="" />
+            <div>
+              <div class="text-lg font-medium text-pink-500">Cartify</div>
+              <p class="text-xs">Online Product Store</p>
+            </div>
+          </div>
+
+          <ul class="hidden md:flex space-x-6">
+            <li>
+              <a
+                href="#home"
+                class="nav-link active-link hover:text-blue-600 transition"
+                >Home</a
+              >
+            </li>
+            <li>
+              <a
+                href="#products"
+                class="nav-link hover:text-blue-600 transition"
+                >Products</a
+              >
+            </li>
+            <li>
+              <a href="#reviews" class="nav-link hover:text-blue-600 transition"
+                >Reviews</a
+              >
+            </li>
+            <li>
+              <a href="#about" class="nav-link hover:text-blue-600 transition"
+                >About</a
+              >
+            </li>
+          </ul>
+
+          <div class="flex items-center space-x-4">
+            <div
+              class="hidden md:flex items-center gap-2 bg-gray-100 px-3 py-1 rounded"
+            >
+              <span class="text-sm">Balance:</span>
+              <span id="userBalance" class="text-pink-500 font-bold">1000</span>
+              BDT
+            </div>
+
+            <button id="cartBtn" class="hidden md:flex relative text-2xl">
+              <i class="fa-solid fa-cart-shopping"></i>
+              <span
+                id="cartCount"
+                class="absolute -top-2 -right-2 bg-pink-500 text-white font-semibold rounded-full text-xs px-2 py-1"
+                >0</span
+              >
+            </button>
+
+            <button id="mobileMenuBtn" class="md:hidden text-2xl">☰</button>
+          </div>
+        </div>
+
+        <!--mobile menu-->
+        <div id="mobileMenu" class="hidden md:hidden mt-4 pb-4">
+          <ul class="space-y-3">
+            <li>
+              <a
+                href="#home"
+                class="nav-link-mobile block active-link hover:text-blue-600 transition"
+                >Home</a
+              >
+            </li>
+            <li>
+              <a
+                href="#products"
+                class="nav-link-mobile block hover:text-blue-600 transition"
+                >Products</a
+              >
+            </li>
+            <li>
+              <a
+                href="#reviews"
+                class="nav-link-mobile block hover:text-blue-600 transition"
+                >Reviews</a
+              >
+            </li>
+            <li>
+              <a
+                href="#about"
+                class="nav-link-mobile block hover:text-blue-600 transition"
+                >About</a
+              >
+            </li>
+          </ul>
+
+          <div class="mt-4 flex items-center justify-between">
+            <div
+              class="flex items-center gap-2 bg-gray-100 px-3 py-1 rounded text-sm"
+            >
+              <span>Balance:</span>
+              <span id="userBalanceMobile" class="text-pink-500 font-bold"
+                >1000</span
+              >
+              BDT
+            </div>
+
+            <button
+              id="cartBtnMobile"
+              class="relative text-xl px-3 py-2 rounded transition"
+            >
+              <i class="fa-solid fa-cart-shopping"></i>
+              <span
+                id="cartCountMobile"
+                class="absolute -top-1 -right-1 bg-pink-500 text-white font-semibold rounded-full text-xs px-2 py-1"
+                >0</span
+              >
+            </button>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- sliding banner-->
+    <section id="home" class="relative h-[450px] overflow-hidden">
+      <div
+        id="bannerContainer"
+        class="flex transition-transform duration-500 h-full"
+      >
+        <!-- banner1 -->
+        <div
+          class="min-w-full h-full bg-cover bg-center"
+          style="
+            background-image: linear-gradient(
+                rgba(0, 0, 0, 0.4),
+                rgba(0, 0, 0, 0.4)
+              ),
+              url('https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?w=1200&h=400&fit=crop');
+          "
+        >
+          <div class="h-full flex items-center justify-center">
+            <div class="text-center text-white px-4">
+              <h1 class="text-5xl font-bold mb-4">Welcome to Cratify</h1>
+              <p class="text-xl">Amazing deals on all products!</p>
+            </div>
+          </div>
+        </div>
+        <!-- banner2 -->
+        <div
+          class="min-w-full h-full bg-cover bg-center"
+          style="
+            background-image: linear-gradient(
+                rgba(0, 0, 0, 0.4),
+                rgba(0, 0, 0, 0.4)
+              ),
+              url('https://images.unsplash.com/photo-1607083206968-13611e3d76db?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=2115');
+          "
+        >
+          <div class="h-full flex items-center justify-center">
+            <div class="text-center text-white px-4">
+              <h1 class="text-5xl font-bold mb-4">Up to 50% Off</h1>
+              <p class="text-xl">Limited time offers on electronics!</p>
+            </div>
+          </div>
+        </div>
+        <!-- banner3 -->
+        <div
+          class="min-w-full h-full bg-cover bg-center"
+          style="
+            background-image: linear-gradient(
+                rgba(0, 0, 0, 0.4),
+                rgba(0, 0, 0, 0.4)
+              ),
+              url('https://images.unsplash.com/photo-1617347454431-f49d7ff5c3b1?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1115');
+          "
+        >
+          <div class="h-full flex items-center justify-center">
+            <div class="text-center text-white px-4">
+              <h1 class="text-5xl font-bold mb-4">Free Shipping</h1>
+              <p class="text-xl">On orders over 500 BDT</p>
+            </div>
+          </div>
+        </div>
+        <!-- banner4 -->
+        <div
+          class="min-w-full h-full bg-cover bg-center"
+          style="
+            background-image: linear-gradient(
+                rgba(0, 0, 0, 0.4),
+                rgba(0, 0, 0, 0.4)
+              ),
+              url('https://images.unsplash.com/photo-1723508767605-eea4fe848603?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1171');
+          "
+        >
+          <div class="h-full flex items-center justify-center">
+            <div class="text-center text-white px-4">
+              <h1 class="text-5xl font-bold mb-4">New Arrivals</h1>
+              <p class="text-xl">Check out our latest collection!</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <button
+        id="prevBtn"
+        class="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white bg-opacity-50 hover:bg-opacity-75 p-3 rounded-full transition"
+      >
+        ❮
+      </button>
+      <button
+        id="nextBtn"
+        class="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white bg-opacity-50 hover:bg-opacity-75 p-3 rounded-full transition"
+      >
+        ❯
+      </button>
+    </section>
+
+    <!--product section -->
+    <section id="products" class="container mx-auto px-4 my-12">
+      <h2 class="text-4xl font-bold text-center">Our Products</h2>
+
+      <!-- filter -->
+      <div class="mb-8 flex justify-end">
+        <select id="sortFilter" class="px-4 py-2 border rounded-lg">
+          <option value="default">Sort By: Default</option>
+          <option value="lowToHigh">Price: Low to High</option>
+          <option value="highToLow">Price: High to Low</option>
+          <option value="rating">Rating</option>
+        </select>
+      </div>
+
+      <!-- product container -->
+      <div
+        id="productsContainer"
+        class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6"
+      ></div>
+    </section>
+
+    <!-- Reviews Section -->
+    <section id="reviews" class="bg-pink-50 py-12">
+      <div class="container mx-auto px-4">
+        <h2 class="text-3xl font-bold mb-8 text-center">Customer Reviews</h2>
+        <div class="relative overflow-hidden">
+          <div
+            id="reviewsContainer"
+            class="flex transition-transform duration-500"
+          >
+            <!-- Reviews will be loaded here -->
+          </div>
+          <button
+            id="prevReview"
+            class="absolute left-0 top-1/2 transform -translate-y-1/2 bg-white p-2 rounded-full shadow-lg"
+          >
+            ❮
+          </button>
+          <button
+            id="nextReview"
+            class="absolute right-0 top-1/2 transform -translate-y-1/2 bg-white p-2 rounded-full shadow-lg"
+          >
+            ❯
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- About Us Section -->
+    <section id="about" class="bg-slate-100 py-16">
+      <div class="container mx-auto px-6">
+        <h2 class="text-3xl font-bold text-center mb-8">About Cartify</h2>
+
+        <div class="max-w-3xl mx-auto text-center mb-12">
+          <p class="text-lg text-gray-600 mb-4">
+            Cartify is a trusted and trendy online shop which offers quality
+            products at reasonable prices. Our goal is to make shopping faster,
+            safer, and more enjoyable for everyone. In the future, we aim to
+            expand our shop and significantly influence the e-commerce industry.
+          </p>
+        </div>
+
+        <h6 class="text-slate-700 text-xl font-bold underline text-center mb-4">
+          Meet Our team
+        </h6>
+        <div
+          class="flex flex-col md:flex-row justify-center items-center gap-10"
+        >
+          <div
+            class="bg-white rounded-2xl shadow-md hover:translate-y-1 transition duration-400 hover:shadow-2xl p-6 w-96 text-center"
+          >
+            <div
+              class="w-28 h-28 mx-auto mb-4 rounded-full overflow-hidden ring-4 ring-pink-300 shadow-md"
+            >
+              <img
+                src="./assets/hasnat.jpeg"
+                alt="Hasnat"
+                class="w-full h-full object-cover scale-150"
+              />
+            </div>
+            <h3 class="text-xl font-semibold text-gray-800">
+              Hasnat Bin Sayed
+            </h3>
+            <p class="text-pink-500 font-medium mb-2">Frontend Developer</p>
+            <p class="text-gray-600 text-sm">
+              Passionate about clean UI design and dynamic interactive web experiences.
+            </p>
+          </div>
+
+          <div class="bg-white rounded-2xl shadow-md hover:translate-y-1 transition duration-400 hover:shadow-2xl p-6 w-96 text-center">
+            <div
+              class="w-28 h-28 mx-auto mb-4 rounded-full overflow-hidden ring-4 ring-pink-300 shadow-md"
+            >
+              <img
+                src="./assets/amran.png"
+                alt="Amran"
+                class="w-full h-full object-cover scale-150"
+              />
+            </div>
+            <h3 class="text-xl font-semibold text-gray-800">Mohammed Amran</h3>
+            <p class="text-pink-500 font-medium mb-2">UI/UX Specialist</p>
+            <p class="text-gray-600 text-sm">
+               Focuses on crafting interfaces, refining visual aesthetics, and enhancing usability
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-8">
+      <div class="container mx-auto px-4">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-6">
+          <div>
+            <h3 class="text-xl font-bold mb-4">SmartShop</h3>
+            <p>Your trusted online store</p>
+          </div>
+          <div>
+            <h3 class="text-xl font-bold mb-4">Quick Links</h3>
+            <ul class="space-y-2">
+              <li><a href="#home" class="hover:text-blue-400">Home</a></li>
+              <li>
+                <a href="#products" class="hover:text-blue-400">Products</a>
+              </li>
+              <li>
+                <a href="#reviews" class="hover:text-blue-400">Reviews</a>
+              </li>
+              <li>
+                <a href="#about" class="hover:text-blue-400">About</a>
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h3 class="text-xl font-bold mb-4">Contact Info</h3>
+            <p>Email: info@smartshop.com</p>
+            <p>Phone: +880 123-456-7890</p>
+          </div>
+        </div>
+        <div class="text-center border-t border-gray-700 pt-6">
+          <p>&copy; 2025 SmartShop. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Cart Modal -->
+    <div
+      id="cartModal"
+      class="hidden fixed inset-0 backdrop-blur-2xl z-50 flex items-center justify-center p-4"
+    >
+      <div
+        class="bg-white rounded-lg max-w-2xl w-full max-h-screen overflow-y-auto"
+      >
+        <div class="p-6">
+          <div class="flex justify-between items-center mb-4">
+            <h2 class="text-2xl font-bold">Shopping Cart</h2>
+            <button id="closeCart" class="text-2xl">&times;</button>
+          </div>
+
+          <div id="cartItems" class="space-y-4 mb-6">
+            <!-- Cart items will appear here -->
+          </div>
+
+          <div class="border-t pt-4 space-y-2">
+            <div class="flex justify-between">
+              <span>Subtotal:</span>
+              <div class="flex items-center gap-3">
+                <span id="subtotal" class="font-bold">0</span> BDT
+              </div>
+            </div>
+            <div class="flex justify-between">
+              <span>Delivery Charge:</span>
+              <div class="flex items-center gap-3">
+                <span id="deliveryCharge" class="font-bold"> 50 </span> BDT
+              </div>
+            </div>
+            <div class="flex justify-between">
+              <span>Shipping Cost:</span>
+              <div class="flex items-center gap-3">
+                <span id="shippingCost" class="font-bold">30</span> BDT
+              </div>
+            </div>
+            <div class="flex justify-between text-green-600">
+              <span>Discount:</span>
+              <div class="flex items-center gap-3">
+                <span id="discount" class="font-bold">0</span> BDT
+              </div>
+            </div>
+            <div class="flex justify-between text-lg font-bold border-t pt-2">
+              <span>Total:</span>
+              <div class="flex items-center gap-3">
+                <span id="total">0</span> BDT
+              </div>
+            </div>
+          </div>
+
+          <div class="mt-4">
+            <input
+              id="couponInput"
+              type="text"
+              placeholder="Enter coupon code"
+              class="w-full px-4 py-2 border rounded-lg mb-2"
+            />
+            <button
+              id="applyCoupon"
+              class="w-full bg-green-600 text-white py-2 rounded-lg hover:bg-green-700"
+            >
+              Apply Coupon
+            </button>
+            <p id="couponMessage" class="text-sm mt-2"></p>
+          </div>
+
+          <div class="mt-6 flex gap-2">
+            <button
+              id="addMoney"
+              class="flex-1 bg-yellow-500 text-white py-3 rounded-lg font-semibold hover:bg-yellow-600"
+            >
+              Add Money (+1000 BDT)
+            </button>
+            <button
+              id="checkout"
+              class="flex-1 bg-blue-600 text-white py-3 rounded-lg font-semibold hover:bg-blue-700"
+            >
+              Checkout
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
