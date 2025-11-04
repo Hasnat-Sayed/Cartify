@@ -6,6 +6,7 @@
 .active-link {
   color: #d43bf6;
   font-weight: 600;
+  text-decoration: underline #d43bf6;
 }
 .cart-item {
   animation: slideIn 0.3s ease;

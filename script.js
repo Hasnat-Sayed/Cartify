@@ -1,4 +1,3 @@
-// Global Variables
 let products = [];
 let reviews = [];
 let filteredProducts = [];
@@ -9,7 +8,7 @@ let currentReviewIndex = 0;
 let discountPercent = 0;
 
 
-// Wait for DOM to be fully loaded
+//dom load
 document.addEventListener('DOMContentLoaded', function () {
     fetchProducts();
     loadReviews();
@@ -19,30 +18,30 @@ document.addEventListener('DOMContentLoaded', function () {
     setupAllEventListeners();
 });
 
-// Setup All Event Listeners (NO DUPLICATES)
+//all event listener
 function setupAllEventListeners() {
-    // Mobile Menu Toggle
+    //mobile menu toggling
     document.getElementById('mobileMenuBtn').addEventListener('click', () => {
         document.getElementById('mobileMenu').classList.toggle('hidden');
     });
 
-    // Cart Modal - Desktop
+    //cart modal for pc
     document.getElementById('cartBtn').addEventListener('click', () => {
         document.getElementById('cartModal').classList.remove('hidden');
     });
 
-    // Cart Modal - Mobile
+    //cart modal for mobile
     document.getElementById('cartBtnMobile').addEventListener('click', () => {
         document.getElementById('cartModal').classList.remove('hidden');
         document.getElementById('mobileMenu').classList.add('hidden');
     });
 
-    // Close Cart
+    //close cart buttn
     document.getElementById('closeCart').addEventListener('click', () => {
         document.getElementById('cartModal').classList.add('hidden');
     });
 
-    // Navigation - Desktop
+    //nav link style and scroll for pc
     document.querySelectorAll('.nav-link').forEach(link => {
         link.addEventListener('click', (e) => {
             e.preventDefault();
@@ -53,7 +52,7 @@ function setupAllEventListeners() {
         });
     });
 
-    // Navigation - Mobile
+    // nav link style and scroll for mobile
     document.querySelectorAll('.nav-link-mobile').forEach(link => {
         link.addEventListener('click', (e) => {
             e.preventDefault();
@@ -65,7 +64,7 @@ function setupAllEventListeners() {
         });
     });
 
-    // Search and Filter
+    //filter btn
     document.getElementById('sortFilter').addEventListener('change', filterProducts);
 
     //banner button events
@@ -79,7 +78,7 @@ function setupAllEventListeners() {
         updateBannerPosition();
     });
 
-    // Review Controls
+    // Review btn events
     document.getElementById('nextReview').addEventListener('click', () => {
         currentReviewIndex = (currentReviewIndex + 1) % reviews.length;
         updateReviewPosition();
@@ -90,26 +89,26 @@ function setupAllEventListeners() {
         updateReviewPosition();
     });
 
-    // Coupon
+    //coupon btn events
     document.getElementById('applyCoupon').addEventListener('click', () => {
         const coupon = document.getElementById('couponInput').value.toUpperCase();
         const message = document.getElementById('couponMessage');
 
         if (coupon === 'SMART10') {
             discountPercent = 10;
-            message.textContent = 'Coupon applied! 10% discount';
+            message.innerHTML = 'Coupon applied! 10% discount';
             message.className = 'text-sm mt-2 text-green-600';
             calculateTotal();
         } else if (coupon === '') {
-            message.textContent = 'Please enter a coupon code';
+            message.innerHTML = 'Please enter a coupon code';
             message.className = 'text-sm mt-2 text-gray-600';
         } else {
-            message.textContent = 'Invalid coupon code';
+            message.innerHTML = 'Invalid coupon code';
             message.className = 'text-sm mt-2 text-red-600';
         }
     });
 
-    // Add Money
+    //add money btn events
     document.getElementById('addMoney').addEventListener('click', () => {
         userBalance += 1000;
         updateBalance();
@@ -117,9 +116,9 @@ function setupAllEventListeners() {
         showNotification('1000 BDT added to your balance!');
     });
 
-    // Checkout
+    //checkout btn events
     document.getElementById('checkout').addEventListener('click', () => {
-        const total = parseFloat(document.getElementById('total').textContent);
+        const total = parseFloat(document.getElementById('total').innerHTML);
         if (cart.length === 0) {
             showNotification('Your cart is empty!', 'error');
             return;
@@ -133,14 +132,14 @@ function setupAllEventListeners() {
         cart = [];
         discountPercent = 0;
         document.getElementById('couponInput').value = '';
-        document.getElementById('couponMessage').textContent = '';
+        document.getElementById('couponMessage').innerHTML = '';
         updateCart();
         document.getElementById('cartModal').classList.add('hidden');
         showNotification('Order placed successfully! Amount deducted from your balance.');
     });
 }
 
-// Fetch Products from API
+//fetch products from api
 async function fetchProducts() {
     try {
         const response = await fetch('https://fakestoreapi.com/products');
@@ -179,7 +178,7 @@ function renderProducts() {
     });
 }
 
-// Add to Cart
+// add to cart
 function addToCart(productId) {
     const product = products.find(p => p.id === productId);
     const existingItem = cart.find(item => item.id === productId);
@@ -194,7 +193,7 @@ function addToCart(productId) {
     showNotification('Product added to cart!');
 }
 
-// Update Cart
+// render cart
 function updateCart() {
     updateCartCount();
 
@@ -210,7 +209,7 @@ function updateCart() {
                             <p class="text-blue-600 font-bold">${item.price} BDT</p>
                         </div>
                         <div class="flex items-center gap-2">
-                            <button onclick="updateQuantity(${item.id}, -1)" class="px-2 py-1 bg-gray-200 rounded hover:bg-gray-300">-</button>
+                            <button onclick="updateQuantity(${item.id}, -1)" class="px-2 py-1 bg-gray-200 hover:bg-gray-300">-</button>
                             <span class="font-semibold quantity-display">${item.quantity}</span>
                             <button onclick="updateQuantity(${item.id}, 1)" class="px-2 py-1 bg-gray-200 rounded hover:bg-gray-300">+</button>
                         </div>
@@ -222,7 +221,7 @@ function updateCart() {
     calculateTotal();
 }
 
-// Update Quantity
+// update quantity
 function updateQuantity(productId, change) {
     const item = cart.find(item => item.id === productId);
     if (item) {
@@ -231,7 +230,7 @@ function updateQuantity(productId, change) {
             removeFromCart(productId);
         } else {
             const quantityElements = document.querySelectorAll(`[data-product-id="${productId}"] .quantity-display`);
-            quantityElements.forEach(el => el.textContent = item.quantity);
+            quantityElements.forEach(el => el.innerHTML = item.quantity);
             updateCartCount();
             calculateTotal();
         }
@@ -244,7 +243,7 @@ function removeFromCart(productId) {
     updateCart();
 }
 
-// Calculate Total
+//calculate total sum
 function calculateTotal() {
     const subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
     const deliveryCharge = subtotal > 0 ? 50 : 0;
@@ -252,24 +251,24 @@ function calculateTotal() {
     const discount = subtotal * (discountPercent / 100);
     const total = subtotal + deliveryCharge + shippingCost - discount;
 
-    document.getElementById('subtotal').textContent = subtotal.toFixed(2);
-    document.getElementById('deliveryCharge').textContent = deliveryCharge;
-    document.getElementById('shippingCost').textContent = shippingCost;
-    document.getElementById('discount').textContent = discount.toFixed(2);
-    document.getElementById('total').textContent = total.toFixed(2);
+    document.getElementById('subtotal').innerHTML = subtotal.toFixed(2);
+    document.getElementById('deliveryCharge').innerHTML = deliveryCharge;
+    document.getElementById('shippingCost').innerHTML = shippingCost;
+    document.getElementById('discount').innerHTML = discount.toFixed(2);
+    document.getElementById('total').innerHTML = total.toFixed(2);
 }
 
-// Update Balance Display
+// update balance display
 function updateBalance() {
-    document.getElementById('userBalance').textContent = userBalance.toFixed(2);
-    document.getElementById('userBalanceMobile').textContent = userBalance.toFixed(2);
+    document.getElementById('userBalance').innerHTML = userBalance.toFixed(2);
+    document.getElementById('userBalanceMobile').innerHTML = userBalance.toFixed(2);
 }
 
-// Update Cart Count
+//update cart count
 function updateCartCount() {
     const count = cart.reduce((sum, item) => sum + item.quantity, 0);
-    document.getElementById('cartCount').textContent = count;
-    document.getElementById('cartCountMobile').textContent = count;
+    document.getElementById('cartCount').innerHTML = count;
+    document.getElementById('cartCountMobile').innerHTML = count;
 }
 
 //filter products
@@ -348,11 +347,11 @@ function updateReviewPosition() {
     container.style.transform = `translateX(-${currentReviewIndex * (100 / 3)}%)`;
 }
 
-// Notification
+// notifications
 function showNotification(message, type = 'success') {
     const notification = document.createElement('div');
     notification.className = `fixed top-20 right-4 px-6 py-3 rounded-lg shadow-lg z-50 ${type === 'success' ? 'bg-green-500' : 'bg-red-500'} text-white`;
-    notification.textContent = message;
+    notification.innerHTML = message;
     document.body.appendChild(notification);
     setTimeout(() => notification.remove(), 700);
 }
