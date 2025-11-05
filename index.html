@@ -6,6 +6,7 @@
     <title>Cartify</title>
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <link rel="stylesheet" href="styles.css" />
+    <link rel="shortcut icon" href="./assets/logo.png" type="image/x-icon">
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
@@ -64,7 +65,7 @@
             </div>
 
             <button id="cartBtn" class="hidden md:flex relative text-2xl">
-              <i class="fa-solid fa-cart-shopping"></i>
+              <i class="fa-solid fa-cart-shopping cursor-pointer"></i>
               <span
                 id="cartCount"
                 class="absolute -top-2 -right-2 bg-pink-500 text-white font-semibold rounded-full text-xs px-2 py-1"
@@ -231,12 +232,12 @@
     </section>
 
     <!--product section -->
-    <section id="products" class="container mx-auto px-4 my-12">
+    <section id="products" class="bg-slate-100 container mx-auto px-4 my-12">
       <h2 class="text-4xl font-bold text-center">Our Products</h2>
 
       <!-- filter -->
-      <div class="mb-8 flex justify-end">
-        <select id="sortFilter" class="px-4 py-2 border rounded-lg">
+      <div class="mb-8 mt-8 md:mt-0 flex justify-center md:justify-end ">
+        <select id="sortFilter" class=" px-4 py-2 border rounded-lg">
           <option value="default">Sort By: Default</option>
           <option value="lowToHigh">Price: Low to High</option>
           <option value="highToLow">Price: High to Low</option>
@@ -254,7 +255,7 @@
     <!-- Reviews Section -->
     <section id="reviews" class="bg-pink-50 py-12">
       <div class="container mx-auto px-4">
-        <h2 class="text-3xl font-bold mb-8 text-center">Customer Reviews</h2>
+        <h2 class="text-4xl font-bold mb-8 text-center">Customer Reviews</h2>
         <div class="relative overflow-hidden">
           <div
             id="reviewsContainer"
@@ -281,7 +282,7 @@
     <!-- About Us Section -->
     <section id="about" class="bg-slate-100 py-16">
       <div class="container mx-auto px-6">
-        <h2 class="text-3xl font-bold text-center mb-8">About Cartify</h2>
+        <h2 class="text-4xl font-bold text-center mb-8">About Cartify</h2>
 
         <div class="max-w-3xl mx-auto text-center mb-12">
           <p class="text-lg text-gray-600 mb-4">
@@ -342,17 +343,17 @@
         </div>
       </div>
     </section>
-    
+
     <!-- footer -->
     <footer
-      class="bg-gradient-to-br from-gray-950 via-pink-950 to-gray-950 text-white py-12"
+      class="bg-gradient-to-br from-gray-900 via-pink-950 to-gray-900 text-white py-12"
     >
       <div class="container mx-auto px-4">
         <div class="grid grid-cols-1 md:grid-cols-5 gap-12 mb-8">
           <div class="md:col-span-2">
             <h3 class="text-2xl font-bold mb-4 text-pink-700">Cartify</h3>
             <p class="text-gray-300 mb-4">
-              SmartShop is your one-stop destination for quality products at
+              Cartify is your one-stop destination for quality products at
               unbeatable prices. We offer a wide range of electronics, fashion,
               jewelry, and more. Our commitment to customer satisfaction and
               fast delivery makes us the trusted choice for online shopping in
@@ -368,22 +369,22 @@
             <ul class="space-y-2">
               <li>
                 <a href="#home" class="text-gray-300 hover:text-blue-400"
-                  >→ Home</a
+                  >Home</a
                 >
               </li>
               <li>
                 <a href="#products" class="text-gray-300 hover:text-blue-400"
-                  >→ Products</a
+                  >Products</a
                 >
               </li>
               <li>
                 <a href="#reviews" class="text-gray-300 hover:text-blue-400"
-                  >→ Reviews</a
+                  >Reviews</a
                 >
               </li>
               <li>
-                <a href="#contact" class="text-gray-300 hover:text-blue-400"
-                  >→ Contact</a
+                <a href="#about" class="text-gray-300 hover:text-blue-400"
+                  >About</a
                 >
               </li>
             </ul>
@@ -393,20 +394,20 @@
             <h3 class="text-xl font-bold mb-4 text-pink-700">Contact Us</h3>
             <ul class="space-y-3 text-gray-300">
               <li class="flex items-start gap-2">
-                <span class="text-blue-400">📧</span>
-                <span>info@smartshop.com</span>
+                <span><i class="fa-regular fa-envelope"></i></span>
+                <span>info@cartify.com</span>
               </li>
               <li class="flex items-start gap-2">
-                <span class="text-blue-400">📞</span>
+                <span><i class="fa-solid fa-phone"></i></span>
                 <span>+880 123-456-7890</span>
               </li>
               <li class="flex items-start gap-2">
-                <span class="text-blue-400">📍</span>
+                <span><i class="fa-solid fa-location-dot"></i></span>
                 <span>Chattogram, Bangladesh</span>
               </li>
               <li class="flex items-start gap-2">
-                <span class="text-blue-400">⏰</span>
-                <span>Mon-Sat: 9AM - 9PM</span>
+                <span><i class="fa-regular fa-clock"></i></span>
+                <span>Sat-Wed: 9AM - 9PM</span>
               </li>
             </ul>
           </div>
@@ -417,7 +418,7 @@
               onclick="window.scrollTo({top: 0, behavior: 'smooth'})"
               class="bg-gradient-to-r from-pink-700 to-purple-700 text-white px-6 py-3 rounded-full shadow-lg transition-all transform hover:scale-105"
             >
-              ⬆ Back to Top
+              <i class="fa-solid fa-arrow-up"></i> Back to Top
             </button>
           </div>
         </div>
@@ -425,7 +426,7 @@
         <div class="border-t border-gray-600 pt-6">
           <div class="flex justify-center items-center gap-4">
             <p class="text-gray-400 text-sm">
-              &copy; 2025 SmartShop. All rights reserved.
+              &copy; 2025 Cartify. All rights reserved.
             </p>
           </div>
         </div>
@@ -435,10 +436,10 @@
     <!-- Cart Modal -->
     <div
       id="cartModal"
-      class="hidden fixed inset-0 backdrop-blur-3xl z-50 flex items-center justify-center p-4"
+      class="hidden fixed inset-0 backdrop-blur-xl z-50 flex items-center justify-center p-4"
     >
       <div
-        class="bg-gray-50 rounded-lg border max-w-2xl w-full max-h-screen overflow-y-auto"
+        class="bg-gray-100 rounded-lg border max-w-2xl w-full max-h-screen overflow-y-auto"
       >
         <div class="p-6">
           <div class="flex justify-between items-center mb-4">

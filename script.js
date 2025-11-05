@@ -245,7 +245,10 @@ function removeFromCart(productId) {
 
 //calculate total sum
 function calculateTotal() {
-    const subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+    let subtotal = 0;
+    for (let item of cart) {
+        subtotal = subtotal + (item.price * item.quantity);
+    }
     const deliveryCharge = subtotal > 0 ? 50 : 0;
     const shippingCost = subtotal > 500 ? 0 : 30;
     const discount = subtotal * (discountPercent / 100);
@@ -266,7 +269,8 @@ function updateBalance() {
 
 //update cart count
 function updateCartCount() {
-    const count = cart.reduce((sum, item) => sum + item.quantity, 0);
+    let count = 0;
+    for (let item of cart) count += item.quantity;
     document.getElementById('cartCount').innerHTML = count;
     document.getElementById('cartCountMobile').innerHTML = count;
 }
