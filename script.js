@@ -135,7 +135,7 @@ function setupAllEventListeners() {
         document.getElementById('couponMessage').innerHTML = '';
         updateCart();
         document.getElementById('cartModal').classList.add('hidden');
-        showNotification('Order placed successfully! Amount deducted from your balance.');
+        showNotification('Order placed successfully!');
     });
 }
 
@@ -208,10 +208,10 @@ function updateCart() {
                             <h4 class="font-semibold">${item.title.substring(0, 40)}...</h4>
                             <p class="text-blue-600 font-bold">${item.price} BDT</p>
                         </div>
-                        <div class="flex items-center gap-2">
-                            <button onclick="updateQuantity(${item.id}, -1)" class="px-2 py-1 bg-gray-200 hover:bg-gray-300">-</button>
+                        <div class="flex items-center gap-2 border">
+                            <button onclick="updateQuantity(${item.id}, -1)" class="px-2 py-1 bg-gray-200 hover:bg-gray-300 border-r">-</button>
                             <span class="font-semibold quantity-display">${item.quantity}</span>
-                            <button onclick="updateQuantity(${item.id}, 1)" class="px-2 py-1 bg-gray-200 rounded hover:bg-gray-300">+</button>
+                            <button onclick="updateQuantity(${item.id}, 1)" class="px-2 py-1 bg-gray-200 hover:bg-gray-300 border-l">+</button>
                         </div>
                         <button onclick="removeFromCart(${item.id})" class="text-red-600 font-bold hover:text-red-800">✕</button>
                     </div>
@@ -280,7 +280,7 @@ function filterProducts() {
     const sort = document.getElementById('sortFilter').value;
     //sorting
     if (sort === 'default') {
-        filterProducts.sort((a, b) => a.id - b.id);
+        filteredProducts.sort((a, b) => a.id - b.id);
     }
     else if (sort === 'lowToHigh') {
         filteredProducts.sort((a, b) => a.price - b.price);
@@ -348,7 +348,9 @@ function startReviewAutoSlide() {
 
 function updateReviewPosition() {
     const container = document.getElementById('reviewsContainer');
-    container.style.transform = `translateX(-${currentReviewIndex * (100 / 3)}%)`;
+    const cardsPerView = window.innerWidth < 768 ? 1 : window.innerWidth < 1024 ? 2 : 3;
+    container.style.transform = `translateX(-${currentReviewIndex * (100 / cardsPerView)}%)`;
+
 }
 
 // notifications
@@ -357,5 +359,5 @@ function showNotification(message, type = 'success') {
     notification.className = `fixed top-20 right-4 px-6 py-3 rounded-lg shadow-lg z-50 ${type === 'success' ? 'bg-green-500' : 'bg-red-500'} text-white`;
     notification.innerHTML = message;
     document.body.appendChild(notification);
-    setTimeout(() => notification.remove(), 700);
+    setTimeout(() => notification.remove(), 1000);
 }

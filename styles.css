@@ -4,9 +4,9 @@
   font-family: "Roboto", sans-serif;
 }
 .active-link {
-  color: #d43bf6;
+  color: #EC407A;
   font-weight: 600;
-  text-decoration: underline #d43bf6;
+  text-decoration: underline #EC407A;
 }
 .cart-item {
   animation: slideIn 0.3s ease;

@@ -6,7 +6,7 @@
     <title>Cartify</title>
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <link rel="stylesheet" href="styles.css" />
-    <link rel="shortcut icon" href="./assets/logo.png" type="image/x-icon">
+    <link rel="shortcut icon" href="./assets/logo.png" type="image/x-icon" />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
@@ -236,8 +236,11 @@
       <h2 class="text-4xl font-bold text-center">Our Products</h2>
 
       <!-- filter -->
-      <div class="mb-8 mt-8 md:mt-0 flex justify-center md:justify-end ">
-        <select id="sortFilter" class=" px-4 py-2 border rounded-lg">
+      <div class="mb-8 mt-8 md:mt-0 flex justify-center md:justify-end">
+        <select
+          id="sortFilter"
+          class="px-4 py-2 border border-gray-400 rounded-sm"
+        >
           <option value="default">Sort By: Default</option>
           <option value="lowToHigh">Price: Low to High</option>
           <option value="highToLow">Price: High to Low</option>
@@ -416,7 +419,7 @@
             <button
               id="backToTop"
               onclick="window.scrollTo({top: 0, behavior: 'smooth'})"
-              class="bg-gradient-to-r from-pink-700 to-purple-700 text-white px-6 py-3 rounded-full shadow-lg transition-all transform hover:scale-105"
+              class="bg-gradient-to-r from-pink-700 to-purple-700 text-white px-6 py-3 rounded-full shadow-lg transition-all transform hover:scale-105 cursor-pointer"
             >
               <i class="fa-solid fa-arrow-up"></i> Back to Top
             </button>
@@ -439,7 +442,7 @@
       class="hidden fixed inset-0 backdrop-blur-xl z-50 flex items-center justify-center p-4"
     >
       <div
-        class="bg-gray-100 rounded-lg border max-w-2xl w-full max-h-screen overflow-y-auto"
+        class="bg-gray-50 rounded-lg border max-w-xl w-full max-h-screen overflow-y-auto"
       >
         <div class="p-6">
           <div class="flex justify-between items-center mb-4">
@@ -505,7 +508,7 @@
             <p id="couponMessage" class="text-sm mt-2 cursor-pointer"></p>
           </div>
 
-          <div class="mt-2 flex gap-2">
+          <div class="mt-2 flex flex-col lg:flex-row gap-2">
             <button
               id="addMoney"
               class="flex-1 bg-rose-500 text-white py-3 rounded-lg font-semibold hover:bg-rose-600 cursor-pointer"
